@@ -28,11 +28,20 @@ two -> redis
 
 ### Debugging
 
+> Debugging pauses execution of our hosted projects until a debugger is attached. 
+
 `tye run --debug api-two`
+
+`tye run --debug *`
 
 Then in IDE - attach to the running process for `api-two`
 
 > To Hot reload on changes
 
 `tye run --watch`
+
+
+## Documentation
+
+https://khalidabuhakmeh.com/local-dev-with-tye-docker-and-dotnet
 
