@@ -30,12 +30,14 @@ namespace api_two
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "api_two", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "api-two", Version = "v1" });
             });
 
+            var redis = Configuration.GetConnectionString("redis");
+            Console.WriteLine("*** Redis *** > " + redis);
             services.AddStackExchangeRedisCache(options =>
             {
-                options.Configuration = Configuration.GetConnectionString("redis");
+                options.Configuration = redis;
             });
         }
 

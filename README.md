@@ -25,3 +25,14 @@ two -> redis
 2. ` dotnet tool install -g Microsoft.Tye --version "0.6.0-alpha.21070.5"`
 3. `tye run`
 4. open dashboard at `http://localhost:8000/`
+
+### Debugging
+
+`tye run --debug api-two`
+
+Then in IDE - attach to the running process for `api-two`
+
+> To Hot reload on changes
+
+`tye run --watch`
+

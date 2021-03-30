@@ -6,24 +6,22 @@ namespace api_one
 {
     public class ApiTwoClient
     {
-        private readonly JsonSerializerOptions options = new JsonSerializerOptions()
+        private readonly JsonSerializerOptions _options = new JsonSerializerOptions()
         {
             PropertyNameCaseInsensitive = true,
             PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
         };
 
-        private readonly HttpClient client;
+        private readonly HttpClient _client;
 
-        public WeatherClient(HttpClient client)
-        {
-            this.client = client;
-        }
+        public ApiTwoClient(HttpClient client) => _client = client;
 
         public async Task<WeatherForecast[]> GetWeatherAsync()
         {
-            var responseMessage = await client.GetAsync("/weatherforecast");
+            var responseMessage = await _client.GetAsync(""); // its at the root route
             var stream = await responseMessage.Content.ReadAsStreamAsync();
-            return await JsonSerializer.DeserializeAsync<WeatherForecast[]>(stream, options);
+            var weather = await JsonSerializer.DeserializeAsync<WeatherForecast[]>(stream, _options);
+            return weather;
         }
     }
 }
