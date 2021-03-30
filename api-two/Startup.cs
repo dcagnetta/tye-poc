@@ -32,6 +32,11 @@ namespace api_two
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "api_two", Version = "v1" });
             });
+
+            services.AddStackExchangeRedisCache(options =>
+            {
+                options.Configuration = Configuration.GetConnectionString("redis");
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
